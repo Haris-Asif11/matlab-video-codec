@@ -24,7 +24,7 @@ You can use src/play_yuv_clip.m to view the selected clip.
 ## Results
 
 ### Rate–Distortion Curve
-![DR Curve](docs/dr_curve.png)
+![DR Curve](docs/DR_Curve.PNG)
 
 ### Decoded Preview — Original vs Decoded
 ![Original vs Decoded](docs/compare.gif)
@@ -39,5 +39,8 @@ You can use src/play_yuv_clip.m to view the selected clip.
 - Bits per pixel (bpp): **0.0873**
 - Compression ratio: **137.50×**  
   *(15.2064 MB raw → 0.108 MB compressed over the evaluated segment)*
+
+## Requirements
+MATLAB R2022b
 
   
