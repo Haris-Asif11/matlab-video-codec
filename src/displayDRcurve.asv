@@ -1,0 +1,35 @@
+function displayDRcurve(image)
+bits = [];
+psnr = [];
+image = im2double(image);
+for i=1:99
+    imwrite(image,"newfile.jpeg", "jpeg", "Quality",i);
+    im2 = imread('newfile.jpeg');
+    bits = [bits get_image_filesize("newfile.jpeg")];
+    rate = bits/(size(im2,1)*size(im2, 2));
+    lossy_image = imread("newfile.jpeg");
+    lossy_image = im2double(lossy_image);    
+    psnr = [psnr psnr_of_frame(image, lossy_image)];
+
+    if(rem(i, 10) == 0)
+        pause(2)
+    end
+
+    subplot(2,2,[1,2])
+    plot(rate, psnr);
+    xlabel('Rate (Bits per Pixel)');
+    ylabel('PSNR (dB)');
+    xlim([0 8])
+    ylim([0 60])
+
+    subplot(2,2,3)
+    imshow(image)
+    title('Original Image')
+
+    subplot(2,2,4)
+    imshow(lossy_image)
+    title('Decompressed Image, Quality Level: '+ i)
+%     imshow(image);
+%     imshow(lossy_image);
+end
+end
